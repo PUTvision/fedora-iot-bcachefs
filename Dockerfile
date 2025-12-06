@@ -35,7 +35,6 @@ RUN set -e && \
     \
     # Cleanup build dependencies to keep the IoT image slim
     # We keep bcachefs-tools and the compiled module, but remove gcc/headers
-    dnf remove -y kernel-devel gcc make && \
     dnf clean all
 
 # Ensure the container is bootable
