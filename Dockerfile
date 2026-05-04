@@ -1,13 +1,13 @@
-FROM quay.io/fedora/fedora-iot:43
+FROM quay.io/fedora/fedora-iot:44
 
 # Label for metadata
 LABEL com.github.containers.bootc=true \
-      description="Fedora IoT 43 with bcachefs support"
+      description="Fedora IoT 44 with bcachefs support"
 
 # 1. Add the bcachefs repository
 # We use ADD to pull the .repo file directly to the correct location
-ADD https://download.opensuse.org/repositories/filesystems:/bcachefs:/release/Fedora_43/filesystems:bcachefs:release.repo \
-    /etc/yum.repos.d/filesystems:bcachefs.repo
+ADD https://copr.fedorainfracloud.org/coprs/ngompa/bcachefs/repo/fedora-44/ngompa-bcachefs-fedora-44.repo \
+    /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:ngompa:bcachefs.repo
 
 # 2. Install dependencies, build the module, and cleanup
 # We combine these into one RUN block to reduce layer size
